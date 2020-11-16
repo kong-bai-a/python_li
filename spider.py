@@ -15,10 +15,10 @@ for num in range(0, 481, 12):
     res = Selector(text=repnose)
     li = res.xpath(("//li"))
     for table in li:
-        li_id = table.xpath("./div/a/@href").get().split("_")[-1]   # 取出id代入视频和url中
-        title = table.xpath("./div/div/a/text()").get()     # 标题
-        headers['Referer'] = 'https://www.pearvideo.com/video_{}'.format(li_id)     # xhr链接
-        url_id = 'cont-{}'.format(li_id)    # 替换前的字符
+        li_id = table.xpath("./div/a/@href").get().split("_")[-1]  
+        title = table.xpath("./div/div/a/text()").get()     
+        headers['Referer'] = 'https://www.pearvideo.com/video_{}'.format(li_id)
+        url_id = 'cont-{}'.format(li_id)
         # li_id2 = video.xpath("./div/div/a/@href").get().split("_")[-1]
         li_url = "https://www.pearvideo.com/videoStatus.jsp?contId={}".format(li_id)
         video = requests.get(li_url, headers=headers).text
